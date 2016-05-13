@@ -1,11 +1,12 @@
 <% if @members.any? %>
   <% @members.each do |member| %>
     <p><%= member.firstname %> <%= member.lastname %></p>
+    <%= link_to "#{member.firstname}: leave Random Coffee", member_path(member), method: :delete %>
   <% end %>
 <% else %>
   No one has signed up yet. Why not be the first?
 <% end %>
 
 <p>
-  <%= link_to "Join Random Coffee", members_new_path %>
+  <%= link_to "Join Random Coffee", new_member_path %>
 </p>

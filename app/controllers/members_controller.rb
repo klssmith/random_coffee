@@ -17,6 +17,13 @@ class MembersController < ApplicationController
     end
   end
 
+  def destroy
+    @member = Member.find(params[:id])
+    @member.destroy
+    flash[:notice] = "You have been removed successfully"
+    redirect_to '/members'
+  end
+
 private
   def member_params
     params.require(:member).permit(:firstname, :lastname, :email)

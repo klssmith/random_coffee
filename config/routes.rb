@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  get '/members' => 'members#index'
-  get '/members/new' => 'members#new'
-  post '/members' => 'members#create'
+  resources :members
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
