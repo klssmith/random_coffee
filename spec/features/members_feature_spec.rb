@@ -11,7 +11,7 @@ feature "members" do
 
   context "there are members of Random Coffee" do
     before :each do
-      Member.create(firstname: "Firstname", lastname: "Lastname")
+      Member.create(firstname: "Firstname", lastname: "Lastname", email: "me@gmail.com")
     end
 
     scenario "should display the names of the members" do
