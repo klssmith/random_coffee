@@ -1,0 +1,9 @@
+<%= form_for @member do |f| %>
+  <%= f.label "First name:" %>
+  <%= f.text_field :firstname %>
+
+  <%= f.label "Last name:" %>
+  <%= f.text_field :lastname %>
+
+  <%= f.submit "Join!" %>
+<% end %>
