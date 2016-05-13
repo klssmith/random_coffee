@@ -37,6 +37,7 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'factory_girl_rails', '~> 4.7'
 end
 
 group :development do
