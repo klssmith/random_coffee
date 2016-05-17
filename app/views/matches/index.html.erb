@@ -1,5 +1,11 @@
 <% if @matches.any? %>
-  Test
+  <% @matches.each do |match| %>
+    <p>
+      <%= match.member1.firstname %> <%= match.member1.lastname %>
+      -
+      <%= match.member2.firstname %> <%= match.member2.lastname %>
+    </p>
+  <% end %>
 <% else %>
   There are no draw results
 <% end %>
