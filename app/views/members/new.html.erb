@@ -1,16 +1,24 @@
 <h1>Join Random Coffee</h1>
 
-<%= form_for @member  do |f| %>
+<div class="row">
+  <%= form_for @member  do |f| %>
   <%= render 'shared/error_messages' %>
 
-  <%= f.label "First name:" %>
-  <%= f.text_field :firstname %>
+  <div class="form-group">
+    <%= f.label "First name:" %>
+    <%= f.text_field :firstname %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Last name:" %>
+    <%= f.text_field :lastname %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Email:" %>
+    <%= f.email_field :email %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Join!", class: "btn btn-primary" %>
+  </div>
 
-  <%= f.label "Last name:" %>
-  <%= f.text_field :lastname %>
-
-  <%= f.label "Email:" %>
-  <%= f.email_field :email %>
-
-  <%= f.submit "Join!" %>
-<% end %>
+  <% end %>
+</div>
