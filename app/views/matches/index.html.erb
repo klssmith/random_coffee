@@ -1,6 +1,9 @@
 <h1>Draw Results</h1>
 
 <% if @matches.any? %>
+  <p>
+    The last draw was made on <%= @draw_time %>
+  </p>
   <% @matches.each do |match| %>
     <p>
       <%= match.member1.try(:firstname) %> <%= match.member1.try(:lastname) %>
