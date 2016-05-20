@@ -3,9 +3,9 @@
 <% if @matches.any? %>
   <% @matches.each do |match| %>
     <p>
-      <%= match.member1.firstname %> <%= match.member1.lastname %>
+      <%= match.member1.try(:firstname) %> <%= match.member1.try(:lastname) %>
       -
-      <%= match.member2.firstname %> <%= match.member2.lastname %>
+      <%= match.member2.try(:firstname) %> <%= match.member2.try(:lastname) %>
     </p>
   <% end %>
 <% else %>
