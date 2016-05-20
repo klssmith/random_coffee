@@ -1,5 +1,7 @@
 <% if @member.errors.any? %>
-  <% @member.errors.full_messages.each do |msg| %>
+  <div class="alert alert-danger">
+    <% @member.errors.full_messages.each do |msg| %>
     <p><%= msg %></p>
-  <% end %>
+    <% end %>
+  </div>
 <% end %>

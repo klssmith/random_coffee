@@ -1,9 +1,14 @@
 <header>
-  <nav>
-    <ul>
-      <li><%= link_to "View draw", root_path %></li>
-      <li><%= link_to "Join", new_member_path %></li>
-      <li><%= link_to "Leave", members_path %></li>
-    </ul>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= link_to "Random Coffee", root_path, class: "navbar-brand" %>
+      </div>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "View draw", root_path %></li>
+          <li><%= link_to "Join", new_member_path %></li>
+          <li><%= link_to "Leave", members_path %></li>
+        </ul>
+    </div>
   </nav>
 </header>
