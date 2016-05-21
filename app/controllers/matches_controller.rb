@@ -18,10 +18,11 @@ private
     populate_matches(shuffled_members)
   end
 
-  def populate_matches(shuffled_members)
+  def populate_matches(members)
     Match.delete_all
-    shuffled_members.each_slice(2) do |slice|
-      Match.create(member1_id: slice[0].id, member2_id: slice[1].id)
+    members.each_slice(2) do |slice|
+      Match.create(member1_id: slice[0].id,
+      member2_id: slice[1] ? slice[1].id : nil)
     end
   end
 end
