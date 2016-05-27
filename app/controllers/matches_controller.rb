@@ -1,7 +1,7 @@
 class MatchesController < ApplicationController
   def index
     @matches = Match.all
-    @draw_time = Match.first.created_at.strftime("%d %B %Y") if Match.any?
+    @draw_time = Match.draw_time
   end
 
   def create
