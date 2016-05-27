@@ -1,6 +1,7 @@
 class Member < ActiveRecord::Base
+  before_save :downcase_email
   validates :firstname, :lastname, :email, presence: true
-  validates :email, uniqueness: true
+  validates :email, uniqueness: { case_sensitive: false }
 
   def match
     if self.match_one
@@ -10,11 +11,19 @@ class Member < ActiveRecord::Base
     end
   end
 
+private
+
   def match_one
     Match.find_by(member1_id: self.id)
   end
 
   def match_two
     Match.find_by(member2_id: self.id)
+  end
+
+private
+
+  def downcase_email
+    self.email = email.downcase
   end
 end
