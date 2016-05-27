@@ -13,6 +13,7 @@ class MatchesController < ApplicationController
   end
 
 private
+
   def shuffle_members
     shuffled_members = Member.all.shuffle
     populate_matches(shuffled_members)
