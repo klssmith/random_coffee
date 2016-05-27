@@ -185,7 +185,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 3.3, >= 3.3.6)
   byebug
-  capybara
+  capybara (~> 2.7)
   coffee-rails (~> 4.1.0)
   factory_girl_rails (~> 4.7)
   jbuilder (~> 2.0)
