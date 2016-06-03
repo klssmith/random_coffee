@@ -10,6 +10,7 @@ feature "displaying users" do
       visit "/members"
       click_link "Joe: leave Random Coffee"
       visit "/members"
+      expect(page).not_to have_content "Joe Bloggs"
       expect(page).to have_content "No one has signed up yet. Why not be the first?"
     end
   end

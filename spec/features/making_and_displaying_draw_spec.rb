@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "making the draw" do
+feature "making and displaying the draw" do
   before do
     Timecop.freeze("2016-05-27 14:39:58")
   end

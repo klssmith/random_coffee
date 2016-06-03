@@ -5,7 +5,7 @@ feature "signing up" do
     scenario "allows a new member to join and be displayed" do
       visit_sign_up_page
       sign_up_as("Joe", "Bloggs", "joe@gmail.com")
-      expect(current_path).to eq "/members"
+      expect(page).to have_current_path(members_path)
       expect(page).to have_content "Joe Bloggs"
     end
   end
