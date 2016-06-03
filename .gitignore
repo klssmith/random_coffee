@@ -12,4 +12,5 @@
 !/log/.keep
 /tmp
 
+.env
 discarded_code.rb
