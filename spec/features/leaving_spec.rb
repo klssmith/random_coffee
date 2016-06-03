@@ -7,5 +7,6 @@ feature "leaving Random Coffee" do
     click_link "Joe: leave Random Coffee"
     expect(page).not_to have_content "Joe Bloggs"
     expect(page).to have_content "You have been removed successfully"
+    expect(page).to have_current_path(members_path)
   end
 end
