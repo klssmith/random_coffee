@@ -1,31 +1,36 @@
-<h1>Member list</h1>
-
-<% if @members.any? %>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>First name</th>
-          <th>Last name</th>
-          <th>Remove member</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @members.each do |member| %>
-          <tr>
-            <td><%= member.firstname %></td>
-            <td><%= member.lastname %></td>
-            <td>
-              <%= link_to "#{member.firstname}: leave Random Coffee", member_path(member), method: :delete %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<div class="page-header">
+  <h1>Member list</h1>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <% if @members.any? %>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Remove member</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @members.each do |member| %>
+              <tr>
+                <td><%= member.firstname %></td>
+                <td><%= member.lastname %></td>
+                <td>
+                  <%= link_to "#{member.firstname}: leave Random Coffee", member_path(member), method: :delete %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      No one has signed up yet. Why not be the first?
+    <% end %>
+    <p>
+      <%= link_to "Join Random Coffee", new_member_path %>
+    </p>
   </div>
-<% else %>
-  No one has signed up yet. Why not be the first?
-<% end %>
-<p>
-  <%= link_to "Join Random Coffee", new_member_path %>
-</p>
+</div>

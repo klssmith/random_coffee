@@ -1,24 +1,27 @@
-<h1>Join Random Coffee</h1>
-
+<div class="page-header">
+  <h1>Join Random Coffee</h1>
+</div>
 <div class="row">
-  <%= form_for @member  do |f| %>
-  <%= render 'shared/error_messages' %>
+  <div class="col-md-12">
+    <%= form_for @member  do |f| %>
+    <%= render 'shared/error_messages' %>
 
-  <div class="form-group">
-    <%= f.label "First name:" %>
-    <%= f.text_field :firstname %>
-  </div>
-  <div class="form-group">
-    <%= f.label "Last name:" %>
-    <%= f.text_field :lastname %>
-  </div>
-  <div class="form-group">
-    <%= f.label "Email:" %>
-    <%= f.email_field :email %>
-  </div>
-  <div class="form-group">
-    <%= f.submit "Join!", class: "btn btn-primary" %>
-  </div>
+    <div class="form-group">
+      <%= f.label "First name:" %>
+      <%= f.text_field :firstname %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Last name:" %>
+      <%= f.text_field :lastname %>
+    </div>
+    <div class="form-group">
+      <%= f.label "Email:" %>
+      <%= f.email_field :email %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Join!", class: "btn btn-primary" %>
+    </div>
 
-  <% end %>
+    <% end %>
+  </div>
 </div>
