@@ -9,6 +9,11 @@ class MatchesController < ApplicationController
 
   def create
     DrawRunner.run
+
+    Member.all.each do |member|
+      MemberMailer.draw_result_email(member).deliver_now
+    end
+
     redirect_to '/matches'
   end
 end
