@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :match do
-    member1_id 1
-    member2_id 2
+    association :member1, factory: :member
+    association :member2, factory: :member
   end
 end

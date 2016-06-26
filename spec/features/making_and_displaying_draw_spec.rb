@@ -25,7 +25,7 @@ feature "making and displaying the draw" do
     context "when there are members" do
       before do
         FactoryGirl.create(:member)
-        FactoryGirl.create(:member, firstname: "Sarah", lastname: "Jones", email: "sjones@example.com")
+        FactoryGirl.create(:member, firstname: "Sarah", lastname: "Jones")
       end
 
       scenario "displays the names of the members" do

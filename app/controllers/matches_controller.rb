@@ -8,22 +8,7 @@ class MatchesController < ApplicationController
   end
 
   def create
-    shuffle_members
+    DrawRunner.run
     redirect_to '/matches'
-  end
-
-private
-
-  def shuffle_members
-    shuffled_members = Member.all.shuffle
-    populate_matches(shuffled_members)
-  end
-
-  def populate_matches(members)
-    Match.delete_all
-    members.each_slice(2) do |slice|
-      Match.create(member1_id: slice[0].id,
-      member2_id: slice[1] ? slice[1].id : nil)
-    end
   end
 end
