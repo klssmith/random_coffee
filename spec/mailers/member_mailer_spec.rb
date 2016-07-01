@@ -31,4 +31,14 @@ RSpec.describe MemberMailer, type: :mailer do
       expect(email.subject).to eq("The Random Coffee draw result")
     end
   end
+
+  context "when a member has no match" do
+    let(:member3) { FactoryGirl.build(:member, firstname: "Oliver", lastname: "Twist", email: "oliver@example.com") }
+
+    it "states that they have no match" do
+      FactoryGirl.create(:match, member1: member3, member2: nil)
+      email = MemberMailer.draw_result_email(member3)
+      expect(email.body.encoded).to include("Unfortunately, you're the person without a match this month.")
+    end
+  end
 end

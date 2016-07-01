@@ -5,9 +5,9 @@ class Member < ActiveRecord::Base
 
   def match
     if self.match_one
-      Member.find(match_one.member2_id)
+      Member.find_by_id(match_one.member2_id)
     elsif self.match_two
-      Member.find(match_two.member1_id)
+      Member.find_by_id(match_two.member1_id)
     end
   end
 
