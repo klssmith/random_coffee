@@ -1,0 +1,10 @@
+$navbar-default-bg: $coffee;
+$navbar-default-link-color: $white;
+$navbar-default-link-hover-color: darken($white, 10%);
+
+.navbar-header .navbar-brand {
+  font-size: 1.5em;
+}
+.nav li {
+  font-size: 1.2em;
+}

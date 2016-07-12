@@ -1,37 +1,41 @@
-<div class="page-header">
-  <h1>Draw Results</h1>
-</div>
 <div class="row">
+  <div class="page-header col-md-10 col-md-offset-1">
+    <h1>Draw Results</h1>
+  </div>
+</div>
 
-    <% if @matches.any? %>
-    <div class="col-md-12">
+<% if @matches.any? %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
       <p>
         The last draw was made on <%= @draw_time %>
       </p>
-    </div>
 
-    <div class="col-md-12">
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Person A</th>
-            <th>Person B</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @matches.each do |match| %>
-          <tr>
-            <td><%= match.member1.try(:firstname) %> <%= match.member1.try(:lastname) %></td>
-            <td><%= match.member2.try(:firstname) %> <%= match.member2.try(:lastname) %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="text-center">Person A</th>
+              <th class="text-center">Person B</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @matches.each do |match| %>
+              <tr class="text-center">
+                <td><%= match.member1.try(:firstname) %> <%= match.member1.try(:lastname) %></td>
+                <td><%= match.member2.try(:firstname) %> <%= match.member2.try(:lastname) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-    <% else %>
-      There are no draw results
-    <% end %>
   </div>
-</div>
+
+<% else %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      There are no draw results
+    </div>
+  </div>
+<% end %>
