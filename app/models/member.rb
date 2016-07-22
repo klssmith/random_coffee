@@ -3,20 +3,14 @@ class Member < ActiveRecord::Base
   validates :firstname, :lastname, :email, presence: true
   validates :email, uniqueness: { case_sensitive: false }
 
-  def match
-    if self.match_one
-      Member.find_by_id(match_one.member2_id)
-    elsif self.match_two
-      Member.find_by_id(match_two.member1_id)
-    end
-  end
+  has_one :match_one, class_name: "Match", foreign_key: :member1_id
+  has_one :match_two, class_name: "Match", foreign_key: :member2_id
 
-  def match_one
-    Match.find_by(member1_id: self.id)
-  end
+  has_one :member1, through: :match_two
+  has_one :member2, through: :match_one
 
-  def match_two
-    Match.find_by(member2_id: self.id)
+  def matched_member
+    member1 || member2
   end
 
 private
