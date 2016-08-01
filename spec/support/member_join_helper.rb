@@ -1,4 +1,4 @@
-module SignInHelper
+module MemberJoinHelper
   def visit_sign_up_page
     visit "/members"
     click_link "Join Random Coffee"
@@ -13,5 +13,5 @@ module SignInHelper
 end
 
 RSpec.configure do |config|
-  config.include SignInHelper, type: :feature
+  config.include MemberJoinHelper, type: :feature
 end

@@ -1,8 +1,9 @@
 require 'rails_helper'
 
-feature "displaying users" do
+feature "displaying members" do
   before do
     FactoryGirl.create(:member)
+    visit user_google_oauth2_omniauth_authorize_path
   end
 
   context "when there are no members" do

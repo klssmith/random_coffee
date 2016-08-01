@@ -3,6 +3,7 @@ require 'rails_helper'
 feature "making and displaying the draw" do
   before do
     Timecop.freeze("2016-05-27 14:39:58")
+    visit user_google_oauth2_omniauth_authorize_path
   end
 
   after do

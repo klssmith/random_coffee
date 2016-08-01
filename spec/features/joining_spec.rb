@@ -1,6 +1,10 @@
 require 'rails_helper'
 
-feature "signing up" do
+feature "joining as a new member" do
+  before do
+    visit user_google_oauth2_omniauth_authorize_path
+  end
+
   context "with valid details" do
     scenario "allows a new member to join and be displayed" do
       visit_sign_up_page
