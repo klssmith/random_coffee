@@ -2,7 +2,7 @@ ruby File.read('.ruby-version').strip
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.2'
+gem 'rails', '4.2.7.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18.4'
 # Use SCSS for stylesheets
