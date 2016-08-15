@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  validates :firstname, :lastname, :email, presence: true
+  validates :email, uniqueness: { case_sensitive: false }
+
   devise :database_authenticatable,
   :omniauthable, omniauth_providers: [:google_oauth2]
 
