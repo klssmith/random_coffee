@@ -9,6 +9,8 @@ class Member < ActiveRecord::Base
   has_one :member1, through: :match_two
   has_one :member2, through: :match_one
 
+  belongs_to :user
+
   def matched_member
     member1 || member2
   end

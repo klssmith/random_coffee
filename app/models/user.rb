@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,
   :omniauthable, omniauth_providers: [:google_oauth2]
 
+  has_one :member, dependent: :destroy
+
   def encrypted_password; end
 
   def self.from_omniauth(access_token)

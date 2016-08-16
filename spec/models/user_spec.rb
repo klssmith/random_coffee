@@ -6,6 +6,8 @@ RSpec.describe User, type: :model do
       User.create(firstname: "Trial", lastname: "User", email: "trial.user@#{ENV["ALLOWED_HOST_DOMAIN"]}")
     end
 
+    it { is_expected.to have_one(:member).dependent(:destroy) }
+
     it { is_expected.to validate_presence_of(:firstname) }
     it { is_expected.to validate_presence_of(:lastname) }
     it { is_expected.to validate_presence_of(:email) }

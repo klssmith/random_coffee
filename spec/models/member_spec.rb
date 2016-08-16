@@ -8,6 +8,7 @@ RSpec.describe Member, type: :model do
     it { is_expected.to have_one(:match_two).class_name("Match") }
     it { is_expected.to have_one(:member1).through(:match_two) }
     it { is_expected.to have_one(:member2).through(:match_one) }
+    it { is_expected.to belong_to(:user) }
 
     it { is_expected.to validate_presence_of(:firstname) }
     it { is_expected.to validate_presence_of(:lastname) }
