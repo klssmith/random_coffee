@@ -9,6 +9,7 @@ class MembersController < ApplicationController
 
   def create
     @member = Member.new(member_params)
+
     if @member.save
       flash[:success] = "You've successfully joined Random Coffee!"
       redirect_to '/members'
@@ -27,6 +28,6 @@ class MembersController < ApplicationController
 private
 
   def member_params
-    params.require(:member).permit(:firstname, :lastname, :email)
+    params.require(:member).permit(:firstname, :lastname, :email, :user_id)
   end
 end
