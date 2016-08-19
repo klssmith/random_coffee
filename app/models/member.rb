@@ -1,5 +1,4 @@
 class Member < ActiveRecord::Base
-  before_save :downcase_email
   validates :firstname, :lastname, :email, presence: true
   validates :email, uniqueness: { case_sensitive: false }
 
@@ -13,11 +12,5 @@ class Member < ActiveRecord::Base
 
   def matched_member
     member1 || member2
-  end
-
-private
-
-  def downcase_email
-    self.email = email.downcase
   end
 end
