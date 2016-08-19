@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
       firstname: data["first_name"],
       lastname: data["last_name"],
       email: data["email"],
-      image: data["image"]
       )
     end
 
