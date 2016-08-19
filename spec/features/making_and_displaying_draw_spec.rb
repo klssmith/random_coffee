@@ -30,21 +30,24 @@ feature "making and displaying the draw" do
       end
 
       scenario "displays the names of the members" do
-        make_draw_and_view
+        visit new_match_path
+        click_on "Make the Random Coffee draw"
         expect(page).not_to have_content "There are no draw results"
         expect(page).to have_content "Joe Bloggs"
         expect(page).to have_content "Sarah Jones"
       end
 
       scenario "displays the time of the last draw" do
-        make_draw_and_view
+        visit new_match_path
+        click_on "Make the Random Coffee draw"
         expect(page).to have_content "27 May 2016"
       end
     end
 
     context "when there are no members" do
       scenario "displays a message that there are no results" do
-        make_draw_and_view
+        visit new_match_path
+        click_on "Make the Random Coffee draw"
         expect(page).to have_content "There are no draw results"
       end
     end
