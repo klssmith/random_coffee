@@ -12,7 +12,7 @@ class MembersController < ApplicationController
 
     if @member.save
       flash[:success] = "You've successfully joined Random Coffee!"
-      redirect_to '/members'
+      redirect_to matches_url
     else
       render 'new'
     end
@@ -22,7 +22,7 @@ class MembersController < ApplicationController
     @member = Member.find(params[:id])
     @member.destroy
     flash[:notice] = "You have been removed successfully"
-    redirect_to '/members'
+    redirect_to matches_url
   end
 
 private
