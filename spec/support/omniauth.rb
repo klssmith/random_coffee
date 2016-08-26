@@ -2,9 +2,9 @@ OmniAuth.config.test_mode = true
 
 OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new({
   info: {
-    first_name: 'Trial',
-    last_name: 'User',
-    email: "trial.user@#{ENV['ALLOWED_HOST_DOMAIN']}"
+    first_name: 'Joe',
+    last_name: 'Bloggs',
+    email: "joe.bloggs@example.com"
     }
   })
 

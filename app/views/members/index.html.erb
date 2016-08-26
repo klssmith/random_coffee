@@ -1,10 +1,36 @@
 <div class="row">
   <div class="page-header col-md-10 col-md-offset-1">
-    <h1>Member list</h1>
+    <h1>Leave the Random Coffee draw</h1>
+    <h3 class="text-muted"><em>(Or remove another member)</em></h3>
   </div>
 </div>
 
 <% if @members.any? %>
+  <div class="row">
+    <div class="well col-md-10 col-md-offset-1">
+      <% if current_user.member %>
+        <h4>
+          Leave the Random Coffee draw:
+        </h4><br />
+        <p>
+          <%= link_to "Remove me, #{current_user.firstname} #{current_user.lastname}", member_path(current_user.member), class: "btn btn-danger btn-lg", method: :delete %>
+        </p>
+      <% else %>
+        You are not a member of the Random Coffee draw.
+      <% end %>
+    </div>
+  </div>
+
+<br />
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <h4>Remove someone else from the draw:</h4>
+      <p>
+        If you see someone who should no longer be a Random Coffee member, for example because they have left GDS, you can remove them from the draw:
+      </p>
+    </div>
+  </div>
+
   <div class="row">
     <div class="table-responsive col-md-10 col-md-offset-1">
       <table class="table table-striped">
@@ -21,7 +47,7 @@
               <td><%= member.firstname %></td>
               <td><%= member.lastname %></td>
               <td>
-                <%= link_to "#{member.firstname}: leave Random Coffee", member_path(member), method: :delete %>
+                <%= link_to "Remove #{member.firstname}", member_path(member), class: "btn bg-danger text-danger btn-outline btn-sm", method: :delete %>
               </td>
             </tr>
           <% end %>
@@ -32,12 +58,7 @@
 <% else %>
   <div class="row">
     <p class="col-md-10 col-md-offset-1">
-      No one has signed up yet. Why not be the first?
+      There are currently no members of the Random Coffee draw.
     </p>
   </div>
 <% end %>
-<div class="row">
-  <p class="col-md-10 col-md-offset-1">
-    <%= link_to "Join Random Coffee", new_member_path %>
-  </p>
-</div>

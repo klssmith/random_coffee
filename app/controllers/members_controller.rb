@@ -21,7 +21,13 @@ class MembersController < ApplicationController
   def destroy
     @member = Member.find(params[:id])
     @member.destroy
-    flash[:notice] = "You have been removed successfully"
+
+    if @member.user == current_user
+      flash[:notice] = "You have left Random Coffee"
+    else
+      flash[:notice] = "#{@member.firstname} has been removed from Random Coffee"
+    end
+    
     redirect_to matches_url
   end
 
