@@ -24,14 +24,22 @@ feature "joining the draw" do
       click_on "Join the Random Coffee draw"
       expect(page).to have_current_path(matches_path)
     end
+
+    scenario "shows the 'Join the Random Coffee draw' button and joining instructions" do
+      visit new_member_path
+      expect(page).to have_content("By clicking on the button below")
+      expect(page).not_to have_content "You've already joined the draw."
+      expect(page).to have_selector("input[type=submit][value='Join the Random Coffee draw']")
+    end
   end
 
   context "when the current user is a member of the draw" do
-    scenario "does not show the 'Join the Random Coffee draw' button" do
+    scenario "does not show the 'Join the Random Coffee draw' button or joining instructions" do
       visit new_member_path
       click_on "Join the Random Coffee draw"
 
       visit new_member_path
+      expect(page).not_to have_content("By clicking on the button below")
       expect(page).not_to have_selector("input[type=submit][value='Join the Random Coffee draw']")
       expect(page).to have_content "You've already joined the draw."
     end

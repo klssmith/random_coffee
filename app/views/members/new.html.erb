@@ -4,11 +4,23 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <% if current_user.member %>
+<% if current_user.member %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
       You've already joined the draw.
-    <% else %>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <p>
+        By clicking on the button below, you will be added to the Random Coffee draw. The draw takes place monthly, and you will receive a notification email the next time the draw is made.
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
       <p>
         <%= form_for @member  do |f| %>
         <%= render 'shared/error_messages' %>
@@ -20,6 +32,6 @@
         <%= f.submit "Join the Random Coffee draw", class: "btn btn-primary btn-lg btn-block" %>
         <% end %>
       </p>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>
