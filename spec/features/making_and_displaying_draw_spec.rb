@@ -4,6 +4,7 @@ feature "making and displaying the draw" do
   before do
     Timecop.freeze("2016-05-27 14:39:58")
     visit user_google_oauth2_omniauth_authorize_path
+    ActionMailer::Base.deliveries.clear
   end
 
   after do
@@ -42,6 +43,12 @@ feature "making and displaying the draw" do
         click_on "Make the Random Coffee draw"
         expect(page).to have_content "27 May 2016"
       end
+
+      scenario "sends the notification emails" do
+        visit new_match_path
+        click_on "Make the Random Coffee draw"
+        expect(ActionMailer::Base.deliveries.count).to eq 2
+      end
     end
 
     context "when there are no members" do
@@ -49,6 +56,12 @@ feature "making and displaying the draw" do
         visit new_match_path
         click_on "Make the Random Coffee draw"
         expect(page).to have_content "There are no draw results"
+      end
+
+      scenario "does not send any notification emails" do
+        visit new_match_path
+        click_on "Make the Random Coffee draw"
+        expect(ActionMailer::Base.deliveries.count).to eq 0
       end
     end
   end
