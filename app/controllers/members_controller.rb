@@ -11,6 +11,7 @@ class MembersController < ApplicationController
     @member = Member.new(member_params)
 
     if @member.save
+      MemberMailer.joining_email(@member).deliver_now
       flash[:success] = "You've successfully joined Random Coffee!"
       redirect_to matches_url
     else

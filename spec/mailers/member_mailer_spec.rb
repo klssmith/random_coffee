@@ -39,4 +39,25 @@ RSpec.describe MemberMailer, type: :mailer do
       end
     end
   end
+
+  describe "#joining_email" do
+    let(:email) { MemberMailer.joining_email(member1) }
+
+    it "is delivered to the specified member" do
+      expect(email.to).to eq(["joe@example.com"])
+    end
+
+    it "comes from the correct email address" do
+      expect(email.from).to eq(["random-coffee@example.com"])
+    end
+
+    it "has the subject 'You've joined the Random Coffee draw'" do
+      expect(email.subject).to eq("You've joined the Random Coffee draw")
+    end
+
+    it "contains the welcome message in the email body" do
+      expect(email.body.encoded).to include("Hello Joe")
+      expect(email.body.encoded).to include("You're now signed up to the Random Coffee draw.")
+    end
+  end
 end

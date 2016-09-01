@@ -3,6 +3,7 @@ require 'rails_helper'
 feature "joining the draw" do
   before do
     visit user_google_oauth2_omniauth_authorize_path
+    ActionMailer::Base.deliveries.clear
     @user = User.first
   end
 
@@ -30,6 +31,13 @@ feature "joining the draw" do
       expect(page).to have_content("By clicking on the button below")
       expect(page).not_to have_content "You've already joined the draw."
       expect(page).to have_selector("input[type=submit][value='Join the Random Coffee draw']")
+    end
+
+    scenario "delivers the joining_email" do
+      visit new_member_path
+      expect(MemberMailer).to receive(:joining_email).once.and_call_original
+      click_on "Join the Random Coffee draw"
+      expect(ActionMailer::Base.deliveries.count).to eq 1
     end
   end
 

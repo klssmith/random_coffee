@@ -7,4 +7,11 @@ class MemberMailer < ApplicationMailer
          subject: "The Random Coffee draw result",
          template_name: template)
   end
+
+  def joining_email(member)
+    @member = member
+    mail(to: member.email,
+         subject: "You've joined the Random Coffee draw",
+         template_name: "joining_email")
+  end
 end
