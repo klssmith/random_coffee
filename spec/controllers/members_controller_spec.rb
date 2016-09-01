@@ -24,4 +24,15 @@ RSpec.describe MembersController, type: :controller do
       expect(ActionMailer::Base.deliveries.count).to eq 0
     end
   end
+
+  describe "DELETE /members (#destroy)" do
+    it "delivers an email when the member is deleted" do
+      member = FactoryGirl.create(:member)
+      expect(MemberMailer).to receive(:leaving_email).once.and_call_original
+
+      delete :destroy, id: member.id
+
+      expect(ActionMailer::Base.deliveries.count).to eq 1 
+    end
+  end
 end

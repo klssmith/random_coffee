@@ -14,4 +14,11 @@ class MemberMailer < ApplicationMailer
          subject: "You've joined the Random Coffee draw",
          template_name: "joining_email")
   end
+
+  def leaving_email(member)
+    @member = member
+    mail(to: member.email,
+         subject: "You have left the Random Coffee draw",
+         template_name: "leaving_email")
+  end
 end

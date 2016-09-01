@@ -9,4 +9,9 @@ class MemberMailerPreview < ActionMailer::Preview
     member = Member.create(firstname: "Katie", lastname: "Smith", email: "me@example.com")
     MemberMailer.joining_email(member)
   end
+
+  def leaving_email
+    member = Member.create(firstname: "Katie", lastname: "Smith", email: "me@example.com")
+    MemberMailer.leaving_email(member)
+  end
 end

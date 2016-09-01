@@ -22,6 +22,7 @@ class MembersController < ApplicationController
   def destroy
     @member = Member.find(params[:id])
     @member.destroy
+    MemberMailer.leaving_email(@member).deliver_now
 
     if @member.user == current_user
       flash[:notice] = "You have left Random Coffee"

@@ -3,6 +3,7 @@ require 'rails_helper'
 feature "leaving Random Coffee" do
   before do
     visit user_google_oauth2_omniauth_authorize_path
+    ActionMailer::Base.deliveries.clear
   end
 
   let (:current_user) { User.first }
@@ -26,6 +27,7 @@ feature "leaving Random Coffee" do
 
     scenario "lets the current user remove other members" do
       member = FactoryGirl.create(:member, firstname: "Ava", lastname: "Lovelace", email: "ava.lovelace@example.com")
+      expect(MemberMailer).to receive(:leaving_email).once.and_call_original
 
       visit members_path
       click_on "Remove Ava"
@@ -34,17 +36,19 @@ feature "leaving Random Coffee" do
       expect(page).not_to have_content("Remove Ava")
 
       expect(Member.exists?(id: member.id)).not_to be true
+      expect(ActionMailer::Base.deliveries.count).to eq 1
     end
 
     context "when the current_user is a member" do
       scenario "the current user is able to leave the draw" do
         member = FactoryGirl.create(:member, email: current_user.email, user_id: current_user.id)
         visit members_path
-
+        expect(MemberMailer).to receive(:leaving_email).once.and_call_original
         expect(page).to have_content("Leave the Random Coffee draw:")
         click_on "Remove me, Joe Bloggs"
         expect(page).to have_content "You have left Random Coffee"
         expect(page).to have_current_path(matches_path)
+        expect(ActionMailer::Base.deliveries.count).to eq 1
       end
     end
 
