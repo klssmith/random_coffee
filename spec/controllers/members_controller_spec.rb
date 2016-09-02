@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe MembersController, type: :controller do
   before do
-    user =  User.create(firstname: "Katie", lastname: "Smith", email: "me@example.com")
+    user =  FactoryGirl.create(:user)
     sign_in(user)
     ActionMailer::Base.deliveries.clear
   end

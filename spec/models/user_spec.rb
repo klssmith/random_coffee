@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe "validations" do
-    before do
-      User.create(firstname: "Trial", lastname: "User", email: "trial.user@#{ENV["ALLOWED_HOST_DOMAIN"]}")
-    end
+    before { FactoryGirl.create(:user) }
 
     it { is_expected.to have_one(:member).dependent(:destroy) }
 
