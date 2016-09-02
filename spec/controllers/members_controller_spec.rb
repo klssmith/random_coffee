@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe MembersController, type: :controller do
   before do
-    allow(subject).to receive(:authenticate_user!)
+    user =  User.create(firstname: "Katie", lastname: "Smith", email: "me@example.com")
+    sign_in(user)
     ActionMailer::Base.deliveries.clear
   end
 

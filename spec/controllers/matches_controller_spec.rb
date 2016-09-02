@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe MatchesController, type: :controller do
   describe "POST /matches (#create)" do
     it "delivers the draw result email" do
-      allow(subject).to receive(:authenticate_user!)
+      user = User.create(firstname: "Katie", lastname: "Smith", email: "me@example.com")
+      sign_in(user)
       ActionMailer::Base.deliveries.clear
       2.times { FactoryGirl.create(:member) }
 
