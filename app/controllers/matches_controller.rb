@@ -14,6 +14,7 @@ class MatchesController < ApplicationController
       MemberMailer.draw_result_email(member).deliver_now
     end
 
+    flash[:notice] = "The draw has been made!"
     redirect_to root_url
   end
 end

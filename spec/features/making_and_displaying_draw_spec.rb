@@ -38,10 +38,11 @@ feature "making and displaying the draw" do
         expect(page).to have_content "Sarah Jones"
       end
 
-      scenario "displays the time of the last draw" do
+      scenario "displays the time of the last draw and a notice that it has been made" do
         visit admin_path
         click_on "Make the Random Coffee draw"
         expect(page).to have_content "27 May 2016"
+        expect(page).to have_content "The draw has been made!"
       end
 
       scenario "sends the notification emails" do
