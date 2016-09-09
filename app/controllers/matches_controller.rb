@@ -14,6 +14,6 @@ class MatchesController < ApplicationController
       MemberMailer.draw_result_email(member).deliver_now
     end
 
-    redirect_to matches_url
+    redirect_to root_url
   end
 end

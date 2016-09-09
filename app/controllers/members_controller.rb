@@ -13,7 +13,7 @@ class MembersController < ApplicationController
     if @member.save
       MemberMailer.joining_email(@member).deliver_now
       flash[:success] = "You've successfully joined Random Coffee!"
-      redirect_to matches_url
+      redirect_to root_url
     else
       render 'new'
     end
@@ -30,7 +30,7 @@ class MembersController < ApplicationController
       flash[:notice] = "#{@member.firstname} has been removed from Random Coffee"
     end
     
-    redirect_to matches_url
+    redirect_to root_url
   end
 
 private

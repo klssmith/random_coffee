@@ -23,7 +23,7 @@ feature "joining the draw" do
     scenario "redirects the new member to the draw results page" do
       visit new_member_path
       click_on "Join the Random Coffee draw"
-      expect(page).to have_current_path(matches_path)
+      expect(page).to have_current_path(root_path)
     end
 
     scenario "shows the 'Join the Random Coffee draw' button and joining instructions" do

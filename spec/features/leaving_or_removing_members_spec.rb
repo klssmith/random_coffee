@@ -47,7 +47,7 @@ feature "leaving Random Coffee" do
         expect(page).to have_content("Leave the Random Coffee draw:")
         click_on "Remove me, Joe Bloggs"
         expect(page).to have_content "You have left Random Coffee"
-        expect(page).to have_current_path(matches_path)
+        expect(page).to have_current_path(root_path)
         expect(ActionMailer::Base.deliveries.count).to eq 1
       end
     end

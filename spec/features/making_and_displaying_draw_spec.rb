@@ -13,12 +13,12 @@ feature "making and displaying the draw" do
 
   context "when a draw has never been made" do
     scenario "displays a message that there are no results" do
-      visit "/matches"
+      visit root_path
       expect(page).to have_content "There are no draw results"
     end
 
     scenario "does not display a draw time" do
-      visit "/matches"
+      visit root_path
       expect(page).not_to have_content "27 May 2016"
     end
   end
@@ -31,7 +31,7 @@ feature "making and displaying the draw" do
       end
 
       scenario "displays the names of the members" do
-        visit new_match_path
+        visit admin_path
         click_on "Make the Random Coffee draw"
         expect(page).not_to have_content "There are no draw results"
         expect(page).to have_content "Joe Bloggs"
@@ -39,13 +39,13 @@ feature "making and displaying the draw" do
       end
 
       scenario "displays the time of the last draw" do
-        visit new_match_path
+        visit admin_path
         click_on "Make the Random Coffee draw"
         expect(page).to have_content "27 May 2016"
       end
 
       scenario "sends the notification emails" do
-        visit new_match_path
+        visit admin_path
         click_on "Make the Random Coffee draw"
         expect(ActionMailer::Base.deliveries.count).to eq 2
       end
@@ -53,13 +53,13 @@ feature "making and displaying the draw" do
 
     context "when there are no members" do
       scenario "displays a message that there are no results" do
-        visit new_match_path
+        visit admin_path
         click_on "Make the Random Coffee draw"
         expect(page).to have_content "There are no draw results"
       end
 
       scenario "does not send any notification emails" do
-        visit new_match_path
+        visit admin_path
         click_on "Make the Random Coffee draw"
         expect(ActionMailer::Base.deliveries.count).to eq 0
       end
