@@ -33,7 +33,15 @@ RSpec.describe MembersController, type: :controller do
 
       delete :destroy, id: member.id
 
-      expect(ActionMailer::Base.deliveries.count).to eq 1 
+      expect(ActionMailer::Base.deliveries.count).to eq 1
     end
+  end
+
+  describe "GET /member_email_addresses" do
+    it "retrieves HTTP success" do
+       get :email
+       expect(response).to have_http_status(:success)
+       expect(response.headers['Content-Type']).to eq('text/csv')
+     end
   end
 end

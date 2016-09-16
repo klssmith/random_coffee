@@ -1,3 +1,5 @@
+require 'csv'
+
 class MembersController < ApplicationController
   def index
     @members = Member.all
@@ -29,8 +31,19 @@ class MembersController < ApplicationController
     else
       flash[:notice] = "#{@member.firstname} has been removed from Random Coffee"
     end
-    
+
     redirect_to root_url
+  end
+
+  def email
+    data = CSV.generate do |csv|
+      Member.all.each do |member|
+        csv << [member.email]
+      end
+    end
+
+    filename = "emails.csv"
+    send_data data, filename: filename
   end
 
 private

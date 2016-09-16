@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
+  get 'member_email_addresses', to: 'members#email'
   get 'admin', to: 'matches#new'
   resources :matches, only: [:index, :create]
   resources :members, except: [:show, :edit, :update]
