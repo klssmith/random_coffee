@@ -241,7 +241,7 @@ DEPENDENCIES
   jquery-rails
   omniauth-google-oauth2 (~> 0.4.1)
   pg (~> 0.19.0)
-  puma (~> 3.4)
+  puma (~> 3.6)
   rails (= 4.2.7.1)
   rails_12factor (~> 0.0.3)
   rspec-rails (~> 3.5, >= 3.5.2)

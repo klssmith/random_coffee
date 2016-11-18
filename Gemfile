@@ -5,6 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.7.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.19.0'
+# Use Puma as the app server
+gem 'puma', '~> 3.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
@@ -58,5 +60,4 @@ end
 
 group :production do
   gem 'rails_12factor', '~> 0.0.3'
-  gem 'puma', '~> 3.4'
 end
