@@ -1,4 +1,4 @@
-class Member < ActiveRecord::Base
+class Member < ApplicationRecord
   validates :firstname, :lastname, :email, presence: true
   validates :email, uniqueness: { case_sensitive: false }
 

@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -21,10 +20,9 @@ ActiveRecord::Schema.define(version: 20160819144457) do
     t.integer  "member2_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["member1_id"], name: "index_matches_on_member1_id", using: :btree
+    t.index ["member2_id"], name: "index_matches_on_member2_id", using: :btree
   end
-
-  add_index "matches", ["member1_id"], name: "index_matches_on_member1_id", using: :btree
-  add_index "matches", ["member2_id"], name: "index_matches_on_member2_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.string   "firstname",  null: false
@@ -33,10 +31,9 @@ ActiveRecord::Schema.define(version: 20160819144457) do
     t.datetime "updated_at", null: false
     t.string   "email",      null: false
     t.integer  "user_id"
+    t.index ["email"], name: "index_members_on_email", unique: true, using: :btree
+    t.index ["user_id"], name: "index_members_on_user_id", using: :btree
   end
-
-  add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
-  add_index "members", ["user_id"], name: "index_members_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "firstname",  null: false
@@ -44,9 +41,8 @@ ActiveRecord::Schema.define(version: 20160819144457) do
     t.string   "email",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "members", "users"
 end
