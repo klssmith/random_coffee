@@ -1,0 +1,6 @@
+---
+applications:
+- name: gds-random-coffee
+  memory: 128M
+  buildpack: ruby_buildpack
+  instances: 2
